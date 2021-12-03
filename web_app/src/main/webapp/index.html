@@ -1,0 +1,90 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="<%=request.getContextPath() %>/JSP/JavaScript/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/JSP/JavaScript/main.js"></script>
+<title>Student imformation system</title>
+</head>
+<body>
+<!-- 
+	定义一些spring url的标签
+ -->
+	<br>
+	<div>
+		<strong>根据ID查找学生信息:</strong>
+		<input type="text" id="getStudentId"/>
+		<button type="button" id="btn1">查询</button>
+		<button type="button" id="btn2">刷新</button>
+	</div>
+	<br>
+	<div id="find">
+		<p>显示区域:</p>
+		<!-- 利用ajax在这里添加一个div显示 ,有2种方式，1种是jquery先隐藏好模块，一种是直接node加入-->
+		
+		<p>2019302110 张三 20 计科 1x </p>
+		<div id="find2">
+			
+		</div>
+	</div>
+	<br>
+	<div id="list">
+
+		<!-- 利用ajax在这里添加一个div显示 ,有2种方式，1种是jquery先隐藏好模块，一种是直接node加入-->
+		<div id="list2">
+			<c:if test="${showList==null }">
+				<p>当前没有数据</p>
+			</c:if>
+			<c:if test="${showList!=null }">
+				<table>
+						<tr>
+							<td>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>姓名 &nbsp;</td>
+							<td>年龄 &nbsp;</td>
+							<td>专业 &nbsp;&nbsp;&nbsp;</td>
+							<td>班级 </td>
+						
+						</tr>
+					<c:forEach var="list" items="${showList.list }">
+
+					</c:forEach>
+				</table>
+								<table>
+						<tr>
+							<td><input type="text" name="fname" size = "2"/></td>
+							<td><input type="text" name="fname" size = "2"/></td>
+							<td><input type="text" name="fname" size = "2"/></td>
+							<td><input type="text" name="fname" size = "2"/></td>
+							<td><input type="text" name="fname" size = "2"/></td>
+
+						</tr>
+					<c:forEach var="list" items="${showList.list }">
+						<tr>
+
+							<td>
+
+								<button id="btn3">更新</button>
+							</td>
+							<td>
+								<input type="hidden" value="${delete }" id="hid">
+								<!-- 调用ajax删除 delete -->
+								<button id="btn4">删除</button>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<table>
+					<tr>
+						<td>首页</td>
+						<td>上一页</td>
+						<td>下一页</td>
+						<td>当前页数:</td>
+						<td>总记录数:</td>
+					</tr>
+				</table>
+			</c:if>
+		</div>
+	</div>
+	<br>
+</body>
+</html>
